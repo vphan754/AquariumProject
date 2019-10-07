@@ -23,7 +23,7 @@ public class AquaSimApplication
      **/
     public static void main(String args[])
     {
-        System.out.println("This will be an aquarium simulation.");
+        System.out.println("THIS IS A SIMULATION 0100010101010101010");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
 
@@ -32,7 +32,13 @@ public class AquaSimApplication
         aqua = new Aquarium(600, 480); // ... object that has now been created
 
         // Construct fish and add them to the aquarium.
-        //      CODE MISSING HERE!
+        AquaFish fish = new AquaFish(aqua);
+        AquaFish feesh = new AquaFish(aqua);
+        AquaFish fiesh = new AquaFish(aqua);
+        
+        aqua.add(fish);
+        aqua.add(feesh);
+        aqua.add(fiesh);
 
         // Construct a graphical user interface (GUI) to display and control
         // the simulation.  The user interface needs to know about the
@@ -54,7 +60,10 @@ public class AquaSimApplication
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-
+        fish.moveForward();
+        feesh.moveForward();
+        fiesh.moveForward();
+        userInterface.showAquarium();
 
         // WRAP UP.
 
