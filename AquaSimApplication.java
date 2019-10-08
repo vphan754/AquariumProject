@@ -29,7 +29,7 @@ public class AquaSimApplication
 
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
-        aqua = new Aquarium(600, 480); // ... object that has now been created
+        aqua = new Aquarium(600, 840); // ... object that has now been created
 
         // Construct fish and add them to the aquarium.
         AquaFish fish = new AquaFish(aqua);
@@ -60,16 +60,20 @@ public class AquaSimApplication
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-        fish.moveForward();
-        feesh.moveForward();
-        fiesh.moveForward();
-        userInterface.showAquarium();
-
-        // WRAP UP.
-
-        // Remind user how to quit application.
-        userInterface.println ("Close GUI display window to quit.");
+        
+        for (;;)
+        {
+            moveFish(fish);
+            moveFish(feesh);
+            moveFish(fiesh);
+            userInterface.showAquarium();
+        }
 
     }//end main
 
+    public static void moveFish(AquaFish fish) //moves a fish.
+    {
+        fish.moveForward();
+        if (fish.atWall()) fish.changeDir();
+    }
 }//end class

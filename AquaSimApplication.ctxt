@@ -4,4 +4,6 @@ comment0.text=\ Aquarium\ Lab\ Series\:\ <br>\ \ \ \ \r\n\ \ \ \ \ \ The\ AquaSi
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment1.text=\r\n\ \ This\ is\ the\ main\ function.\ \ It\ executes\ the\ program.\r\n\ \ @param\ \ \ \ String\ args[]\ is\ never\ used\r\n
-numComments=2
+comment2.params=fish
+comment2.target=void\ moveFish(AquaFish)
+numComments=3
