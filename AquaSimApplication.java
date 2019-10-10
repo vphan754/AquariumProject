@@ -34,19 +34,25 @@ public class AquaSimApplication
         aqua = new Aquarium(600, 840); // ... object that has now been created
 
         // Construct fish and add them to the aquarium.
-        AquaFish fish = new AquaFish(aqua, Color.RED);
-        AquaFish feesh = new AquaFish(aqua, Color.BLUE);
-        AquaFish fiesh = new AquaFish(aqua, Color.BLUE);
+        AquaFish fish1 = new AquaFish(aqua, RandomColor(generator));
+        AquaFish fish2= new AquaFish(aqua, RandomColor(generator));
+        AquaFish fish3 = new AquaFish(aqua, RandomColor(generator));
+        AquaFish fish4 = new AquaFish(aqua, RandomColor(generator));
+        AquaFish fish5= new AquaFish(aqua, RandomColor(generator));
+        AquaFish fish6 = new AquaFish(aqua, RandomColor(generator));
         
-        aqua.add(fish);
-        aqua.add(feesh);
-        aqua.add(fiesh);
+        aqua.add(fish1);
+        aqua.add(fish2);
+        aqua.add(fish3);
+        aqua.add(fish4);
+        aqua.add(fish5);
+        aqua.add(fish6);
 
         // Construct a graphical user interface (GUI) to display and control
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
         AquaSimGUI userInterface;              // create reference to GUI ...
-        userInterface = new AquaSimGUI(aqua);  // ... and then GUI itself
+        userInterface = new AquaSimGUI(aqua, true);  // ... and then GUI itself
 
         // Tell the user how to start the aquarium simulation.
         System.out.println("Press the Start button to start the simulation.");
@@ -63,19 +69,51 @@ public class AquaSimApplication
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
         
-        for (;;)
+        for (int i = 0; i<userInterface.getNumberOfSteps(); i++)
         {
-            moveFish(fish);
-            moveFish(feesh);
-            moveFish(fiesh);
+            moveFish(fish1, generator);
+            moveFish(fish2, generator);
+            moveFish(fish3, generator);
+            moveFish(fish4, generator);
+            moveFish(fish5, generator);
+            moveFish(fish6, generator);
             userInterface.showAquarium();
         }
 
     }//end main
 
-    public static void moveFish(AquaFish fish) //moves a fish.
+    public static Color RandomColor(Random rand)
+    {
+        int randNum = rand.nextInt(6);
+        switch (randNum)
+        {
+            case 0:
+                return Color.RED;
+            case 1:
+                return Color.ORANGE;
+            case 2:
+                return Color.YELLOW;
+            case 3:
+                return Color.GREEN;
+            case 4:
+                return Color.BLUE;
+            case 5:
+                return Color.MAGENTA;
+            default:
+                return null;
+        }
+    }
+    
+    public static boolean randomChoice(Random rand)
+    {
+        int randNum = rand.nextInt(4);
+        if (randNum == 1) return true;
+        else return false;
+    }
+    
+    public static void moveFish(AquaFish fish, Random rand) //moves a fish.
     {
         fish.moveForward();
-        if (fish.atWall()) fish.changeDir();
+        if (fish.atWall() || randomChoice(rand)) fish.changeDir();
     }
 }//end class
